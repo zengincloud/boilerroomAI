@@ -1,0 +1,19 @@
+model Cadence {
+  id        Int      @id @default(autoincrement())
+  name      String
+  steps     Step[]
+  active    Int      @default(0)
+  completed Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Step {
+  id         Int      @id @default(autoincrement())
+  type       String   // 'email' or 'call'
+  title      String
+  content    String
+  delayDays  Int
+  cadenceId  Int
+  cadence    Cadence  @relation(fields: [cadenceId], references: [id])
+} 
