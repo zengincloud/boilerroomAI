@@ -56,32 +56,7 @@ export default function MeetingsHadPage() {
             <CardTitle>Calendar View</CardTitle>
           </CardHeader>
           <CardContent>
-            <Calendar
-              mode="single"
-              selected={selectedDate}
-              onSelect={setSelectedDate}
-              className="rounded-md border"
-              components={{
-                DayContent: ({ date }) => {
-                  const meetingsOnDay = meetings.filter(
-                    (meeting) => meeting.date.toDateString() === date.toDateString(),
-                  )
-                  return (
-                    <div className="relative">
-                      {date.getDate()}
-                      {meetingsOnDay.length > 0 && (
-                        <Badge
-                          variant="secondary"
-                          className="absolute -top-2 -right-2 h-4 w-4 rounded-full p-0 text-[10px]"
-                        >
-                          {meetingsOnDay.length}
-                        </Badge>
-                      )}
-                    </div>
-                  )
-                },
-              }}
-            />
+            <Calendar mode="single" selected={selectedDate} onSelect={setSelectedDate} className="rounded-md border" />
           </CardContent>
         </Card>
 
