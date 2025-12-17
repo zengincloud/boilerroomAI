@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Sidebar } from "@/components/sidebar"
 import { LayoutDashboard, Mail, Phone, Search } from "lucide-react"
@@ -16,10 +16,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useToast } from "@/components/ui/use-toast"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const { toast } = useToast()
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   const handleCall = () => {
     toast({
@@ -42,6 +44,18 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
     })
   }
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault()
+        setIsSearchOpen(true)
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
+
   return (
     <div className="flex h-screen bg-background">
       {/* Sidebar */}
@@ -55,9 +69,17 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
             <Button variant="ghost" size="sm" className="lg:hidden" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
               <LayoutDashboard className="h-4 w-4" />
             </Button>
-            <div className="flex items-center max-w-lg flex-1">
-              <Search className="h-4 w-4 absolute ml-3 text-muted-foreground" />
-              <Input className="pl-9" placeholder="Search people, accounts, or activities..." />
+            <div className="flex items-center w-full max-w-2xl">
+              <div className="relative w-full">
+                <Search className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  className="pl-9 pr-12 py-2 h-10 w-full"
+                  placeholder="Search across people, accounts, emails, calls..."
+                />
+                <kbd className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-xs font-medium text-muted-foreground opacity-100">
+                  <span className="text-xs">⌘</span>K
+                </kbd>
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -86,10 +108,39 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
+        {/* Search Dialog */}
+        <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+          <DialogContent className="sm:max-w-[600px]">
+            <DialogHeader>
+              <DialogTitle>Search</DialogTitle>
+            </DialogHeader>
+            <div className="relative">
+              <Search className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <Input className="pl-9" placeholder="Search across people, accounts, emails, calls..." autoFocus />
+            </div>
+            <div className="mt-4 space-y-2">
+              <h3 className="text-sm font-medium">Recent Searches</h3>
+              <div className="space-y-1">
+                <Button variant="ghost" className="w-full justify-start text-sm h-8">
+                  <Search className="h-3 w-3 mr-2" />
+                  TechCorp account details
+                </Button>
+                <Button variant="ghost" className="w-full justify-start text-sm h-8">
+                  <Search className="h-3 w-3 mr-2" />
+                  John Doe contact info
+                </Button>
+                <Button variant="ghost" className="w-full justify-start text-sm h-8">
+                  <Search className="h-3 w-3 mr-2" />
+                  Enterprise Outreach sequence
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+
         {/* Main Content Area */}
-        <main className="flex-1 overflow-auto p-6">{children}</main>
+        <main className="flex-1 overflow-auto p-6 h-full">{children}</main>
       </div>
     </div>
   )
 }
-

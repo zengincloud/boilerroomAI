@@ -187,4 +187,3 @@ export function Sidebar({ className }: { className?: string }) {
     </div>
   )
 }
-

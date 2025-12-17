@@ -234,4 +234,3 @@ export function PipelineReport({ date, fullWidth = false }: PipelineReportProps)
     </Card>
   )
 }
-

@@ -54,4 +54,3 @@ export function ChartTooltipContent({ active, payload, label }: any) {
 export function ChartTooltip(props: any) {
   return <ChartTooltipContent {...props} />
 }
-

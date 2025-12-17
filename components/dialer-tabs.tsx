@@ -19,4 +19,3 @@ export function DialerTabs() {
     </Tabs>
   )
 }
-

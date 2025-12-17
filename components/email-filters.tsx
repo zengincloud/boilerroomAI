@@ -152,4 +152,3 @@ export function EmailFilters({ activeTab }: EmailFiltersProps) {
     </div>
   )
 }
-

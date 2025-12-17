@@ -306,4 +306,3 @@ export function EmailEditor({ emailId }: EmailEditorProps) {
     </Card>
   )
 }
-

@@ -122,4 +122,3 @@ function MetricCard({ title, value, change, trend, description }: MetricCardProp
     </Card>
   )
 }
-

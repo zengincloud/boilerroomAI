@@ -192,4 +192,3 @@ export function SalesPerformanceReport({ date, fullWidth = false }: SalesPerform
     </Card>
   )
 }
-

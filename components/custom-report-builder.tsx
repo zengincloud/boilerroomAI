@@ -451,4 +451,3 @@ export function CustomReportBuilder({ date }: CustomReportBuilderProps) {
     </div>
   )
 }
-

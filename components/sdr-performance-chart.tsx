@@ -29,7 +29,7 @@ const normalizedData = sdrProgress.map((item) => ({
 
 export function SDRPerformanceChart() {
   return (
-    <Card>
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>Weekly SDR Performance</CardTitle>
         <CardDescription>
@@ -38,7 +38,7 @@ export function SDRPerformanceChart() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="h-[350px]">
+        <div className="h-[450px]">
           <ChartContainer
             config={{
               progress: {
@@ -52,7 +52,7 @@ export function SDRPerformanceChart() {
             }}
           >
             <ResponsiveContainer width="100%" height="100%">
-              <RadarChart data={normalizedData} margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
+              <RadarChart data={normalizedData} margin={{ top: 20, right: 40, bottom: 20, left: 40 }}>
                 <PolarGrid />
                 <PolarAngleAxis dataKey="category" />
                 <ChartTooltip content={<ChartTooltipContent />} />
@@ -91,4 +91,3 @@ export function SDRPerformanceChart() {
     </Card>
   )
 }
-

@@ -287,4 +287,3 @@ export function ActivityReport({ date, fullWidth = false }: ActivityReportProps)
     </Card>
   )
 }
-

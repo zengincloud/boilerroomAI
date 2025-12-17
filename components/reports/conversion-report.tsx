@@ -223,4 +223,3 @@ export function ConversionReport({ date, fullWidth = false }: ConversionReportPr
     </Card>
   )
 }
-

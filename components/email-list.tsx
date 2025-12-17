@@ -330,4 +330,3 @@ export function EmailList({ type, onSelectEmail, selectedEmail }: EmailListProps
     </div>
   )
 }
-
