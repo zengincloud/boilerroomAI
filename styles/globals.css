@@ -13,7 +13,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 293 100% 28%;
+    /* Primary color is #4CD112 (HSL: 100 78% 44%) */
+    --primary: 100 78% 44%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -30,7 +31,9 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 293 100% 28%;
+
+    /* Ring uses #4CD112 for focus states */
+    --ring: 100 78% 44%;
 
     --radius: 0.5rem;
   }
@@ -45,7 +48,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 293 100% 28%;
+    /* Keep the same #4CD112 brand green in dark mode */
+    --primary: 100 78% 44%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -62,7 +66,9 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 293 100% 28%;
+
+    /* Slightly brighter ring in dark mode for contrast */
+    --ring: 100 78% 55%;
   }
 }
 
