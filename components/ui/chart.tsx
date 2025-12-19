@@ -17,7 +17,7 @@ export function ChartContainer({ config, children }: ChartContainerProps) {
     <ChartContext.Provider value={{ config }}>
       <style jsx global>{`
         :root {
-          --chart-1: 293 100% 28%;
+          --chart-1: 100 78% 44%;
           --chart-2: 210 40% 96.1%;
           --color-progress: #75008d;
           --color-target: #d4d4d8;
